@@ -1,0 +1,37 @@
+* Raspi UNI Utilities
+** Tmate Keep Alive Session
+*** Why?
+As the University the cluster is at (UNI) does not yet allow people to
+use static public ip addresses, there is no way one could have access
+to the Cluster-Pi outside of the Department of Science's wifi network.
+
+That is, until now. Now we use the tool called tmate that opens a tmate
+session in the servers of tmate.io from a node in the cluster. Then
+this script emails us the credentials needed for us to connect that
+same tmate and synchronise our terminals, and in some way granting us
+access to a complete terminal. And with that we can change whatever we
+want.
+
+*** Installation instructions
+This will need superuser permissions to build @stackd 's [[https://github.com/stackd/daemon-py][Daemon-pi]] library
+#+begin_src sh
+git clone https://github.com/CestDiego/raspi_uni
+cd raspi_uni
+./setup
+#+end_src
+
+*** Usage
+After that you only need to run the daemon like this (be sure to be in the raspi_uni folder)
+
+#+begin_src sh
+python tmate_keepalive.py start
+#+end_src
+
+That should start the daemon for this session. If you want this daemon
+to persist after a reboot consider adding it to your .xinitrc or use
+whatever method you are most comfortable with.
+
+*** Issues
+Feel free to report issues and submit pull requests sharing is loving
+* License
+see [[https://github.com/cestdiego/raspi_uni/blob/master/LICENSE][LICENSE]]
