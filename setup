@@ -1,0 +1,6 @@
+#!/bin/sh
+git clone https://github.com/stackd/daemon-py.git
+cd daemon-py
+sudo python setup.py install
+
+python tmate_keepalive.py start
