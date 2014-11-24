@@ -52,12 +52,27 @@ class tmateDaemon(Daemon):
         tmate_new_session = "cd && tmate -S /tmp/tmate.sock new-session -d"
         while True:
             if (subprocess.call(tmate_get_ssh, shell=True)):
+
                 subprocess.call(tmate_new_session, shell=True)
                 time.sleep(3)
                 ssh = subprocess.check_output(tmate_get_ssh,
                                               stderr=subprocess.STDOUT,
                                               shell=True)
                 email(ssh)
+            else:
+                ssh = subprocess.check_output(tmate_get_ssh,
+                                              stderr=subprocess.STDOUT,
+                                              shell=True)
+                if(subprocess.call(ssh, shell=True)):
+                    subprocess.call(tmate_new_session, shell=True)
+                    time.sleep(3)
+                    ssh = subprocess.check_output(tmate_get_ssh,
+                                                  stderr=subprocess.STDOUT,
+                                                  shell=True)
+                    email(ssh)
+
+
+
             time.sleep(1)
 
 
