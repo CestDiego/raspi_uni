@@ -30,7 +30,8 @@ def email(ssh):
     server.login('cestdiego@gmail.com', PASSWD)
 
     fromaddr = "cestdiego@gmail.com"
-    tolist = ["cestdiego@gmail.com"]
+    tolist = ["cestdiego@gmail.com"
+              , "ce.cruz@gmail.com"]
 
     sub = "New tmate session was created"
     body = "Hi, it seems your tmate session has been closed.\n\nDon't worry, you can access the new one with:\n " + ssh
